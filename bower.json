@@ -1,0 +1,23 @@
+{
+  "name": "blank-project-website",
+  "description": "blank project for codding",
+  "main": "index.js",
+  "license": "BSD-2-Clause",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "jquery": "3.4.1",
+    "jquery-ui": "jqueryui#^1.12.1",
+    "normalize": "./source/stylus/vendor-css/normalize.css",
+    "jquery-cookie": "^1.4.1",
+    "jquery-form": "^4.2.2",
+    "jquery-lazy": "^1.7.10",
+    "owl.carousel": "^2.3.4"
+  }
+}
