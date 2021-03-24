@@ -5,3 +5,13 @@ block title
 	- var page_class = 'p-main';
 
 block content
+	.l-container
+		.l-content-container
+			+b('').carousel-nav.js-carousel-nav
+				+b('button').carousel-btn prev
+				+b('button').carousel-btn next
+			+b('').carousel.js-fox-carousel
+				+e('img')(src="http://placehold.it/500x300/0000FF").img
+				+e('img')(src="http://placehold.it/500x300/00FF00").img
+				+e('img')(src="http://placehold.it/500x300/FF0000").img
+				+e('img')(src="http://placehold.it/500x300/000000").img
