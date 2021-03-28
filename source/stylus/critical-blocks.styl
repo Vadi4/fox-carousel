@@ -13,9 +13,6 @@
 	align-items center
 	justify-content center
 	
-.b-carousel
-	display flex
-	overflow hidden
 	
 .b-carousel-nav
 	margin-bottom 24px
@@ -35,3 +32,27 @@
 	border-radius 4px
 	padding 0 24px
 	background-color #66CCFF
+	
+// CAROUSEL PLUGIN STYELS
+
+.fox-carousel
+	display flex
+	overflow hidden
+	position relative
+	>
+		*
+			transition .5s opacity, .5s visibility
+			&:not(.js-act)
+				position absolute
+				top 0
+				left 0
+				width 100%
+				height 100%
+				opacity 0
+				visibility hidden
+			&.js-act
+				opacity 1
+				visibility visible
+	
+
+// END CAROUSE PLUGIN STYLES
