@@ -12,7 +12,7 @@ class foxCarousel {
 
 	init() {
 		this.$el.classList.add('fox-carousel');
-		this.$el.querySelector('*:first-child').classList.add('js-act');
+		this.$el.firstElementChild.classList.add('js-act');
 	}
 
 	setNavContainer(container) {
