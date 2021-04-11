@@ -16,8 +16,8 @@ class foxCarousel {
 	}
 
 	setNavContainer(container) {
-		let $prevBtn = document.querySelector(container).querySelector(':first-child');
-		let $nextBtn = document.querySelector(container).querySelector(':last-child');
+		let $prevBtn = document.querySelector(container).firstElementChild;
+		let $nextBtn = document.querySelector(container).lastElementChild;
 
 		$prevBtn.addEventListener('click', (e) => {
 			this.prev();
@@ -35,7 +35,7 @@ class foxCarousel {
 		if( $actSlide.nextElementSibling ) {
 			$actSlide.nextElementSibling.classList.add('js-act');
 		} else {
-			this.$el.querySelector('*:first-child').classList.add('js-act');
+			this.$el.firstElementChild.classList.add('js-act');
 		}
 	}
 
@@ -46,7 +46,7 @@ class foxCarousel {
 		if( $actSlide.previousElementSibling ) {
 			$actSlide.previousElementSibling.classList.add('js-act');
 		} else {
-			this.$el.querySelector('*:last-child').classList.add('js-act');
+			this.$el.lastElementChild.classList.add('js-act');
 		}
 	}
 }
