@@ -14,6 +14,10 @@ module.exports = function(){
 				suffix: '.min'
 			}))
 			.pipe($.gulp.dest('build/js'))
+
+		$.gulp.src('source/scripts/client.js')
+			.pipe($.plumber())
+			.pipe($.gulp.dest('plugin/js'))			
 		cb();
 	});
 };
