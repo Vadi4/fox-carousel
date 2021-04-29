@@ -2,11 +2,21 @@ class imCarousel {
 
 	constructor(selector, options) {
 		this.$el = document.querySelector(selector);
+		this.autoplayTimer, this.time = null;
 
 		this.init();
 
 		if( options.navContainer ) {
 			this.setNavContainer( options.navContainer );
+		}
+
+		if( options.autoPlay ) {
+			this.time = 5000;
+			if( options.autoPlayTimeout ) {
+				this.time = options.autoPlayTimeout;
+			}
+
+			this.setAutoplay(this.time);
 		}
 	}
 
@@ -15,6 +25,7 @@ class imCarousel {
 		this.$el.firstElementChild.classList.add('js-act');
 	}
 
+	// NAVIGATION EVENTS
 	setNavContainer(container) {
 		let $prevBtn = document.querySelector(container).firstElementChild;
 		let $nextBtn = document.querySelector(container).lastElementChild;
@@ -37,6 +48,8 @@ class imCarousel {
 		} else {
 			this.$el.firstElementChild.classList.add('js-act');
 		}
+
+		this.restartAutoplay();
 	}
 
 	prev() {
@@ -48,11 +61,22 @@ class imCarousel {
 		} else {
 			this.$el.lastElementChild.classList.add('js-act');
 		}
+
+		this.restartAutoplay();
+	}
+	// END NAVIGATION EVENTS
+
+	setAutoplay(time) {
+
+		this.autoplayTimer = setInterval( () => {
+			this.next();
+		}, time);
+	}
+
+	restartAutoplay() {
+		clearTimeout(this.autoplayTimer);
+		this.setAutoplay(this.time);
 	}
 }
-
-const carousel = new imCarousel('.js-im-carousel', {
-	navContainer: '.js-carousel-nav'
-});
 
 // window.im = carousel;

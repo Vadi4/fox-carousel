@@ -22,7 +22,7 @@ module.exports = function(){
 		], $.gulp.series('copy'));
 		$.gulp.watch(['source/images/sprite-svg/*.svg', 'source/images/sprite-svg-colored/*.svg'], $.gulp.series('svgSprite'));
 		$.gulp.watch(['source/images/sprite/*.png'], $.gulp.series('sprite'));
-		$.gulp.watch(['source/scripts/client.js'], $.gulp.series('javascript'));
+		$.gulp.watch(['source/scripts/client.js', 'source/scripts/index.js'], $.gulp.series('javascript'));
 		$.gulp.watch('source/plugins.js', $.gulp.series('bower'));
 		$.gulp.watch(['source/fonts/*.ttf'], $.gulp.series('ttf2woff2'));
 		cb();
