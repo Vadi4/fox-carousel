@@ -2,7 +2,8 @@ class imCarousel {
 
 	constructor(selector, options) {
 		this.$el = document.querySelector(selector);
-		this.autoplayTimer, this.time = null;
+		this.autoplayTimer, this.time, this.counter, this.length = null;
+		this.options = options;
 
 		this.init();
 
@@ -23,6 +24,21 @@ class imCarousel {
 	init() {
 		this.$el.classList.add('im-carousel');
 		this.$el.firstElementChild.classList.add('js-act');
+		this.counter = 1;
+		this.length = this.$el.children.length;
+
+		if( this.options.counterTotal ) {
+			document.querySelector( this.options.counterTotal ).innerHTML = this.length;
+		}
+
+		this.change();
+	}
+
+	change() {
+
+		if( this.options.counterCurrent ) {
+			document.querySelector( this.options.counterCurrent ).innerHTML = this.counter;
+		}
 	}
 
 	// NAVIGATION EVENTS
@@ -45,13 +61,18 @@ class imCarousel {
 
 		if( $actSlide.nextElementSibling ) {
 			$actSlide.nextElementSibling.classList.add('js-act');
+			this.counter++;
 		} else {
 			this.$el.firstElementChild.classList.add('js-act');
+			this.counter = 1;
 		}
 
-		if( options.autoPlay ) {
+		if( this.options.autoPlay ) {
 			this.restartAutoplay();
 		}
+
+		this.change();
+
 	}
 
 	prev() {
@@ -60,13 +81,17 @@ class imCarousel {
 
 		if( $actSlide.previousElementSibling ) {
 			$actSlide.previousElementSibling.classList.add('js-act');
+			this.counter--;
 		} else {
 			this.$el.lastElementChild.classList.add('js-act');
+			this.counter = this.length;
 		}
 
-		if( options.autoPlay ) {
+		if( this.options.autoPlay ) {
 			this.restartAutoplay();
 		}
+
+		this.change();
 	}
 	// END NAVIGATION EVENTS
 
