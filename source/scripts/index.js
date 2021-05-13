@@ -49,7 +49,9 @@ class imCarousel {
 			this.$el.firstElementChild.classList.add('js-act');
 		}
 
-		this.restartAutoplay();
+		if( options.autoPlay ) {
+			this.restartAutoplay();
+		}
 	}
 
 	prev() {
@@ -62,7 +64,9 @@ class imCarousel {
 			this.$el.lastElementChild.classList.add('js-act');
 		}
 
-		this.restartAutoplay();
+		if( options.autoPlay ) {
+			this.restartAutoplay();
+		}
 	}
 	// END NAVIGATION EVENTS
 
